@@ -14,7 +14,7 @@ class AjaxController extends Controller{
     public function get_post_content() {
 
         $this->postObject = new Post();
-        $post = $this->postObject->getPost($pID);
+        $post = $this->postObject->getPost($_GET['pID']);
         $this->set('response', $post['content']);
     }
     
