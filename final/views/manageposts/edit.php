@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="page-header">
-   <h1> the Add Post View </h1>
+   <h1>Add Post</h1>
   </div>
   <?php if($message){?>
     <div class="alert alert-success">
@@ -23,6 +23,24 @@
           <input type="text" class="span6" name="post_categoryID" value="<?php echo $categoryID?>">
           <br/>
           <input type="hidden" name="pID" value="<?php echo $pID?>"/>
+          <label for="category">Category</label>
+          <select class="input-sm" name="category" id="category" required="category">
+          <option value="">-- Select Category --</option>
+          
+          <?php
+            foreach($categories as $key => $value){
+              if($categoryID == $key){
+				  echo "<option selected value='".$key."'>".$value."</option>" . "\n";
+              }
+              else {
+				  echo "<option value='".$key."'>".$value."</option>" . "\n";
+              }
+			 
+			}
+          ?>
+          
+          </select>
+          <br>
           <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
         </form>
 

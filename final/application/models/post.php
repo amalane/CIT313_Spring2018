@@ -21,7 +21,7 @@ class Post extends Model{
 			$numposts = ' LIMIT '.$limit;
 		}
 		
-		$sql =  'SELECT pID, title, content, date, uID, categoryID FROM posts'.$numposts;
+		$sql =  'SELECT pID, title, content, date, uID, categoryID FROM posts'.$numposts . ' ORDER BY date DESC';
 		
 		// perform query
 		$results = $this->db->execute($sql);
@@ -37,7 +37,7 @@ class Post extends Model{
 	public function addPost($data){
 		
 		$sql='INSERT INTO posts (title,content,date,categoryID) VALUES (?,?,?,?)'; 
-		$this->db->execute($sql,$data);
+		$result = $this->db->execute($sql,$data);
 		$message = 'Post added.';
 		return $message;
 		
@@ -50,6 +50,19 @@ class Post extends Model{
 		$message = 'Post updated.';
 		return $message;
 		
+	}
+
+	function deletePost($pID){
+		
+		$sql =  'DELETE FROM posts WHERE pID = ?';
+		
+		// perform query
+		$results = $this->db->getrow($sql, array($pID));
+		
+		$post = $results;
+	
+		return $post;
+	
 	}
 
 	

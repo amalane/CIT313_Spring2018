@@ -13,7 +13,7 @@
 
 		<div style = "margin-top: 15px;"><a href = "<?php echo BASE_URL ?>ajax/get_post_content/?pID=<?php echo $p['pID']; ?>" class="btn post-loader"> View entire post</a></div>
 
-<?php }?>
+	<?php }?>
 
 </div>
 

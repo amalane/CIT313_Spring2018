@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="page-header">
-   <h1> the Add Post View </h1>
+   <h1>Add Post</h1>
   </div>
   <?php if($message){?>
     <div class="alert alert-success">
@@ -19,10 +19,21 @@
           <textarea id="tinyeditor" name="post_content" style="width:556px;height: 200px"><?php echo $content?></textarea>
           <label>Date</label>
           <input type="datetime-local" class="span6" name="post_date" value="<?php echo $date?>">
-          <label>CategoryID</label>
-          <input type="text" class="span6" name="post_categoryID" value="<?php echo $categoryID?>">
-          <br/>
+          
+          <label for="category">Category</label>
+          <select class="input-sm" name="post_categoryID" id="category" required="category">
+          <option value="">-- Select Category --</option>
+          
+          <?php
+            foreach($categories as $key => $value){
+          echo "<option value='".$key."'>".$value."</option>" . "\n";
+			 
+			}
+          ?>
+  
+          </select>
           <input type="hidden" name="pID" value="<?php echo $pID?>"/>
+          <br>
           <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
         </form>
 
