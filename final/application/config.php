@@ -8,4 +8,6 @@ define('DB_USER', 'amalane');
 define('DB_PASS', 'Ball.state.fate.toy.1984');
 define('DB_NAME', 'amalane_db');
 
+include('application/plugins/GoodReads.php');
+
 ?>

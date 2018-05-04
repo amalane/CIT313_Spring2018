@@ -19,12 +19,17 @@ class Users extends Model{
 			$this->last_name = $userInfo['last_name'];
 			$this->email = $userInfo['email'];
 			$this->user_type = $userInfo['user_type'];
-			
 
 		}
+	}
 
+	public function isActive($uID) {
+		$sql =  'SELECT active FROM users WHERE uID = ?';
+		
+		// perform query
+		$result = $this->db->getrow($sql, array($uID));
 
-
+		return ( $result['active'] == 1 );
 	}
 
 	public function getUserName() {
@@ -112,6 +117,25 @@ class Users extends Model{
 	}
 
 	public function updateUser($data){
+	}
+
+	public function deleteUser($uID) {
+		$sql =  'DELETE FROM users WHERE uID = ?';
+		
+		// perform query
+		$results = $this->db->getrow($sql, array($uID));
+		
+		$message = 'User ' . $uID . ' deleted.';
+		return $message;
+	}
+
+	public function approveUser($uID) {
+		// Set the 'active' field for uID to '1'
+		$sql='UPDATE users SET active=1 WHERE uID=?'; 
+		$this->db->execute($sql, array($uID));
+
+		$message = 'User ' . $uID . ' approved.';
+		return $message;
 	}
 
 	public function getUserFromEmail($email){

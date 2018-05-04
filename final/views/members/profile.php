@@ -1,9 +1,11 @@
-<?php include('views/elements/header.php');?>
-
+<?php include('views/elements/header.php'); ?>
+<?php
+if (is_array($user)) {
+    extract($user);
+}?>
 <div class="container">
 	<div class="page-header">
-   <h1> Register </h1>
-   <p><font size="4">Register Today!</font></p>
+   <p><font size="4">Profile Update</font></p>
   </div>
 
 
@@ -49,4 +51,12 @@
       </div>
     </div>
 </div>
-<?php include('views/elements/footer.php');?>
+
+
+
+
+
+
+
+
+<?php include('views/elements/footer.php'); ?>

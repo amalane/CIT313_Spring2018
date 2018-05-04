@@ -41,5 +41,11 @@ class BlogController extends Controller{
 		header("Location: " . BASE_URL . "blog/post/" . $_POST['pid']);
 	}
 	
+	public function category($categoryID){
+		$this->postObject = new Post();
+		$posts = $this->postObject->getCategoryPosts($categoryID);
+		$this->set('title', 'Blog Category');
+		$this->set('posts',$posts);
+	}
 	
 }

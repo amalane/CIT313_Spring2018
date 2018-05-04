@@ -21,7 +21,8 @@ class Post extends Model{
 			$numposts = ' LIMIT '.$limit;
 		}
 		
-		$sql =  'SELECT pID, title, content, date, uID, categoryID FROM posts'.$numposts . ' ORDER BY date DESC';
+		$sql =  'SELECT * FROM posts p INNER JOIN categories c on c.categoryid = p.categoryid'
+			. $numposts . ' ORDER BY date DESC';
 		
 		// perform query
 		$results = $this->db->execute($sql);
@@ -33,6 +34,20 @@ class Post extends Model{
 		return $posts;
 	
 	}
+
+	public function getCategoryPosts($cID){
+        $sql = 'select * from posts p
+			INNER JOIN categories c on c.categoryid = p.categoryid
+			INNER JOIN users u on u.uid = p.uid
+			WHERE c.categoryID = ?';
+			
+        $results = $this->db->execute($sql, $cID);
+        while ($row=$results->fetchrow()) {
+            $posts[] = $row;
+        }
+        return $posts;
+    }
+
 	
 	public function addPost($data){
 		

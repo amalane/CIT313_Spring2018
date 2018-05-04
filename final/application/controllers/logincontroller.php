@@ -1,6 +1,7 @@
 <?php
 
 class LoginController extends Controller{
+    //$this->userObject->isActive($userInfo['uID'])
 	
     protected $userObject;
     
@@ -15,6 +16,11 @@ class LoginController extends Controller{
     if($this->userObject->checkUser($_POST['email'],$_POST['password'])) {
        
         $userInfo = $this->userObject->getUserFromEmail($_POST['email']);
+
+        if( !$this->userObject->isActive($userInfo['uID'])  ) {
+            $this->set('error','Account is still awaiting approval');
+            return;
+        }
 
         $_SESSION['uID'] = $userInfo['uID'];
 

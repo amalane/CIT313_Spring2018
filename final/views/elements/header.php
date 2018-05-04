@@ -71,19 +71,31 @@
                         </a>
                         <ul class = "dropdown-menu" role="menu">
 
+                          <li>
+                              <a href ="<?php echo BASE_URL ?>members/profile/">My Profile</a>
+                          </li>
                         <?php
                              if($u->isAdmin()) {
                           ?>
+
+                          <li>
+                              <a href ="<?php echo BASE_URL ?>categories/">Manage Categories</a>
+                          </li>
                           <li>
                               <a href ="<?php echo BASE_URL ?>manageposts/">Manage Posts</a>
+                          </li>
+                          <li>
+                              <a href ="<?php echo BASE_URL ?>manageusers/">Manage Users</a>
                           </li>
                           <?php
                           }
                           ?>
+
+              
+                              
                           <li>
-                          
-                          </li>
                               <a href ="<?php echo BASE_URL ?>login/logout/">Log out</a>
+                          </li>
                         </ul>
                       </li>
                     </ul>
